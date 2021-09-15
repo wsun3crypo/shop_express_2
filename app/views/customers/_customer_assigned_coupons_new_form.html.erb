@@ -1,0 +1,22 @@
+<!-- Form assigned_coupon start -->
+<%= form_with(model: @assigned_coupon, local: true) do |f| %>
+<!-- Form assigned_coupon end -->
+
+  <!-- Label and input for coupons_id start -->
+  <div class="form-group">
+    <%= f.label :coupons_id %>
+
+    <!-- Input for coupons_id start -->
+    <%= f.text_field :coupons_id, class: "form-control" %>
+    <!-- Input for coupons_id end -->
+  </div>
+  <!-- Label and input for coupons_id end -->
+
+  <!-- Label and input for customers_id start -->
+  <!-- Input for customers_id start -->
+  <%= f.hidden_field :customers_id, value: @customer.id %>
+  <!-- Input for customers_id end -->
+  <!-- Label and input for customers_id end -->
+
+  <%= f.submit "Create assigned coupon", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

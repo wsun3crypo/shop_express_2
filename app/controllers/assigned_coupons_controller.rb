@@ -24,7 +24,12 @@ class AssignedCouponsController < ApplicationController
     @assigned_coupon = AssignedCoupon.new(assigned_coupon_params)
 
     if @assigned_coupon.save
-      redirect_to @assigned_coupon, notice: 'Assigned coupon was successfully created.'
+      message = 'AssignedCoupon was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @assigned_coupon, notice: message
+      end
     else
       render :new
     end

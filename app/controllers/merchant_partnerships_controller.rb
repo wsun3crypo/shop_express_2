@@ -24,7 +24,12 @@ class MerchantPartnershipsController < ApplicationController
     @merchant_partnership = MerchantPartnership.new(merchant_partnership_params)
 
     if @merchant_partnership.save
-      redirect_to @merchant_partnership, notice: 'Merchant partnership was successfully created.'
+      message = 'MerchantPartnership was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @merchant_partnership, notice: message
+      end
     else
       render :new
     end

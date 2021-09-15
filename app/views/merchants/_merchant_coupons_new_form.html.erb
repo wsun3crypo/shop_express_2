@@ -1,0 +1,32 @@
+<!-- Form coupon start -->
+<%= form_with(model: @coupon, local: true) do |f| %>
+<!-- Form coupon end -->
+
+  <!-- Label and input for merchants_id start -->
+  <!-- Input for merchants_id start -->
+  <%= f.hidden_field :merchants_id, value: @merchant.id %>
+  <!-- Input for merchants_id end -->
+  <!-- Label and input for merchants_id end -->
+
+  <!-- Label and input for amount start -->
+  <div class="form-group">
+    <%= f.label :amount %>
+
+    <!-- Input for amount start -->
+    <%= f.text_field :amount, class: "form-control" %>
+    <!-- Input for amount end -->
+  </div>
+  <!-- Label and input for amount end -->
+
+  <!-- Label and input for expiry_date start -->
+  <div class="form-group">
+    <%= f.label :expiry_date %>
+
+    <!-- Input for expiry_date start -->
+    <%= f.date_select :expiry_date, class: "form-control" %>
+    <!-- Input for expiry_date end -->
+  </div>
+  <!-- Label and input for expiry_date end -->
+
+  <%= f.submit "Create coupon", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

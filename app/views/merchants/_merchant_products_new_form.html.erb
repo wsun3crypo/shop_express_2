@@ -1,0 +1,42 @@
+<!-- Form product start -->
+<%= form_with(model: @product, local: true) do |f| %>
+<!-- Form product end -->
+
+  <!-- Label and input for merchants_id start -->
+  <!-- Input for merchants_id start -->
+  <%= f.hidden_field :merchants_id, value: @merchant.id %>
+  <!-- Input for merchants_id end -->
+  <!-- Label and input for merchants_id end -->
+
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <%= f.label :description %>
+
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: "form-control" %>
+    <!-- Input for description end -->
+  </div>
+  <!-- Label and input for description end -->
+
+  <!-- Label and input for picture start -->
+  <div class="form-group">
+    <%= f.label :picture %>
+
+    <!-- Input for picture start -->
+    <%= f.text_field :picture, class: "form-control" %>
+    <!-- Input for picture end -->
+  </div>
+  <!-- Label and input for picture end -->
+
+  <!-- Label and input for price start -->
+  <div class="form-group">
+    <%= f.label :price %>
+
+    <!-- Input for price start -->
+    <%= f.text_field :price, class: "form-control" %>
+    <!-- Input for price end -->
+  </div>
+  <!-- Label and input for price end -->
+
+  <%= f.submit "Create product", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

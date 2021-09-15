@@ -24,7 +24,12 @@ class CustomerFriendsController < ApplicationController
     @customer_friend = CustomerFriend.new(customer_friend_params)
 
     if @customer_friend.save
-      redirect_to @customer_friend, notice: 'Customer friend was successfully created.'
+      message = 'CustomerFriend was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @customer_friend, notice: message
+      end
     else
       render :new
     end

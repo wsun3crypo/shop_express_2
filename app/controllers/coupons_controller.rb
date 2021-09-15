@@ -8,6 +8,8 @@ class CouponsController < ApplicationController
 
   # GET /coupons/1
   def show
+    @assigned_coupon = AssignedCoupon.new
+    @purchased_product = PurchasedProduct.new
   end
 
   # GET /coupons/new
@@ -24,7 +26,12 @@ class CouponsController < ApplicationController
     @coupon = Coupon.new(coupon_params)
 
     if @coupon.save
-      redirect_to @coupon, notice: 'Coupon was successfully created.'
+      message = 'Coupon was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @coupon, notice: message
+      end
     else
       render :new
     end

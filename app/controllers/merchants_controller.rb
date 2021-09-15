@@ -8,6 +8,10 @@ class MerchantsController < ApplicationController
 
   # GET /merchants/1
   def show
+    @merchant_partnership = MerchantPartnership.new
+    @loyalty_program = LoyaltyProgram.new
+    @product = Product.new
+    @coupon = Coupon.new
   end
 
   # GET /merchants/new
