@@ -7,6 +7,9 @@ class LoyaltyProgramResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :purchased_products,
+             foreign_key: :loyaltyprogram_id
+
   belongs_to :customers,
              resource: CustomerResource
 
