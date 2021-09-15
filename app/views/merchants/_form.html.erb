@@ -1,0 +1,135 @@
+<% was_validated = merchant.errors.any? %>
+
+<%= form_with(model: merchant, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for name start -->
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = merchant.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+    <!-- Input for name start -->
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <!-- Input for name end -->
+    <% if name_was_invalid %>
+      <% merchant.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for name end -->
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = merchant.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
+    <!-- Input for description end -->
+    <% if description_was_invalid %>
+      <% merchant.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for description end -->
+  <!-- Label and input for address start -->
+  <div class="form-group">
+    <% address_class = "form-control" %>
+    <% address_was_invalid = merchant.errors.include?(:address) %>
+
+    <% if was_validated %>
+      <% if address_was_invalid %>
+        <% address_class << " is-invalid" %>
+      <% else %>
+        <% address_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :address %>
+    <!-- Input for address start -->
+    <%= f.number_field :address, class: address_class, placeholder: "Enter address" %>
+    <!-- Input for address end -->
+    <% if address_was_invalid %>
+      <% merchant.errors.full_messages_for(:address).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for address end -->
+  <!-- Label and input for tel start -->
+  <div class="form-group">
+    <% tel_class = "form-control" %>
+    <% tel_was_invalid = merchant.errors.include?(:tel) %>
+
+    <% if was_validated %>
+      <% if tel_was_invalid %>
+        <% tel_class << " is-invalid" %>
+      <% else %>
+        <% tel_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :tel %>
+    <!-- Input for tel start -->
+    <%= f.text_field :tel, class: tel_class, placeholder: "Enter tel" %>
+    <!-- Input for tel end -->
+    <% if tel_was_invalid %>
+      <% merchant.errors.full_messages_for(:tel).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for tel end -->
+  <!-- Label and input for picture start -->
+  <div class="form-group">
+    <% picture_class = "form-control" %>
+    <% picture_was_invalid = merchant.errors.include?(:picture) %>
+
+    <% if was_validated %>
+      <% if picture_was_invalid %>
+        <% picture_class << " is-invalid" %>
+      <% else %>
+        <% picture_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :picture %>
+    <!-- Input for picture start -->
+    <%= f.text_field :picture, class: picture_class, placeholder: "Enter picture" %>
+    <!-- Input for picture end -->
+    <% if picture_was_invalid %>
+      <% merchant.errors.full_messages_for(:picture).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for picture end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
