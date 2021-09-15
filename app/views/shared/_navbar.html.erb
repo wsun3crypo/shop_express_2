@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      ShopExpress2
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsible-nav-links" aria-controls="collapsible-nav-links" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsible-nav-links">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Resources
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a href="/product_reviews" class="dropdown-item">
+              Product Reviews
+            </a>
+            <a href="/assigned_coupons" class="dropdown-item">
+              Assigned Coupons
+            </a>
+            <a href="/customer_friends" class="dropdown-item">
+              Customer Friends
+            </a>
+            <a href="/merchant_partnerships" class="dropdown-item">
+              Merchant Partnerships
+            </a>
+            <a href="/loyalty_programs" class="dropdown-item">
+              Loyalty Programs
+            </a>
+            <a href="/customers" class="dropdown-item">
+              Customers
+            </a>
+            <a href="/purchased_products" class="dropdown-item">
+              Purchased Products
+            </a>
+            <a href="/products" class="dropdown-item">
+              Products
+            </a>
+            <a href="/coupons" class="dropdown-item">
+              Coupons
+            </a>
+            <a href="/merchants" class="dropdown-item">
+              Merchants
+            </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if current_customer.blank? %>
+          <li class="nav-item">
+            <a href="/customers/sign_in" class="nav-link">
+              Customer sign in
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/customers/sign_up" class="nav-link">
+              Customer sign up
+            </a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a href="/customers/edit" class="nav-link">
+              Customer edit profile
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/customers/sign_out" data-method="delete" class="nav-link">
+              Customer sign out
+            </a>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav">
+        <% if current_merchant.blank? %>
+          <li class="nav-item">
+            <a href="/merchants/sign_in" class="nav-link">
+              Merchant sign in
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/merchants/sign_up" class="nav-link">
+              Merchant sign up
+            </a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a href="/merchants/edit" class="nav-link">
+              Merchant edit profile
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/merchants/sign_out" data-method="delete" class="nav-link">
+              Merchant sign out
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div> <!-- .navbar-collapse -->
+  </div> <!-- .container -->
+</nav>
