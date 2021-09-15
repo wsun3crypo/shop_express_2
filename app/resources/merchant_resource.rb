@@ -12,6 +12,10 @@ class MerchantResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :received_partnership_request,
+             resource: MerchantPartnershipResource,
+             foreign_key: :receiver_id
+
   has_many   :partnership_request,
              resource: MerchantPartnershipResource,
              foreign_key: :sender_id
