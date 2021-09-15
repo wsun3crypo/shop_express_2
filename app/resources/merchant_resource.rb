@@ -32,6 +32,14 @@ class MerchantResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :purchased_products do
+    assign_each do |merchant, purchased_products|
+      purchased_products.select do |p|
+        p.id.in?(merchant.purchased_products.map(&:id))
+      end
+    end
+  end
+
   has_many :customers_dealings, resource: CustomerResource do
     assign_each do |merchant, customers|
       customers.select do |c|
