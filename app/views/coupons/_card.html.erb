@@ -1,0 +1,51 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Coupon #<%= coupon.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Merchants</dt>
+      <!-- Display merchants_id start -->
+      <dd><%= coupon.merchants_id %></dd>
+      <!-- Display merchants_id end -->
+
+      <dt>Amount</dt>
+      <!-- Display amount start -->
+      <dd><%= coupon.amount %></dd>
+      <!-- Display amount end -->
+
+      <dt>Expiry date</dt>
+      <!-- Display expiry_date start -->
+      <dd><%= coupon.expiry_date %></dd>
+      <!-- Display expiry_date end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back coupon, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link coupon start -->
+      <div class="col">
+        <%= link_to edit_coupon_url(coupon), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link coupon end -->
+
+      <!-- Delete link coupon start -->
+      <div class="col">
+        <%= link_to coupon, method: :delete, data: { confirm: "Do you really want to delete this coupon?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link coupon end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(coupon.updated_at) %> ago
+  </div>
+</div>

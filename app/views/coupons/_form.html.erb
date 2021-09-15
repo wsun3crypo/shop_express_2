@@ -1,0 +1,83 @@
+<% was_validated = coupon.errors.any? %>
+
+<%= form_with(model: coupon, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for merchants_id start -->
+  <div class="form-group">
+    <% merchant_class = "form-control" %>
+    <% merchant_was_invalid = coupon.errors.include?(:merchant) %>
+
+    <% if was_validated %>
+      <% if merchant_was_invalid %>
+        <% merchant_class << " is-invalid" %>
+      <% else %>
+        <% merchant_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :merchants_id %>
+    <!-- Input for merchants_id start -->
+    <%= f.number_field :merchants_id, class: merchant_class, placeholder: "Enter merchant" %>
+    <!-- Input for merchants_id end -->
+    <% if merchant_was_invalid %>
+      <% coupon.errors.full_messages_for(:merchant).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for merchants_id end -->
+  <!-- Label and input for amount start -->
+  <div class="form-group">
+    <% amount_class = "form-control" %>
+    <% amount_was_invalid = coupon.errors.include?(:amount) %>
+
+    <% if was_validated %>
+      <% if amount_was_invalid %>
+        <% amount_class << " is-invalid" %>
+      <% else %>
+        <% amount_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :amount %>
+    <!-- Input for amount start -->
+    <%= f.number_field :amount, class: amount_class, placeholder: "Enter amount" %>
+    <!-- Input for amount end -->
+    <% if amount_was_invalid %>
+      <% coupon.errors.full_messages_for(:amount).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for amount end -->
+  <!-- Label and input for expiry_date start -->
+  <div class="form-group">
+    <% expiry_date_class = "form-control" %>
+    <% expiry_date_was_invalid = coupon.errors.include?(:expiry_date) %>
+
+    <% if was_validated %>
+      <% if expiry_date_was_invalid %>
+        <% expiry_date_class << " is-invalid" %>
+      <% else %>
+        <% expiry_date_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :expiry_date %>
+    <!-- Input for expiry_date start -->
+    <%= f.date_select :expiry_date, class: expiry_date_class, placeholder: "Enter expiry date" %>
+    <!-- Input for expiry_date end -->
+    <% if expiry_date_was_invalid %>
+      <% coupon.errors.full_messages_for(:expiry_date).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for expiry_date end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
