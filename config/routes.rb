@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :product_reviews
   resources :assigned_coupons
   resources :customer_friends
   resources :merchant_partnerships

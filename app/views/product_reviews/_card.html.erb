@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Product Review #<%= product_review.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Review</dt>
+      <!-- Display review start -->
+      <dd><%= product_review.review %></dd>
+      <!-- Display review end -->
+
+      <dt>Customers</dt>
+      <!-- Display customers_id start -->
+      <dd><%= product_review.customers_id %></dd>
+      <!-- Display customers_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back product_review, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link product_review start -->
+      <div class="col">
+        <%= link_to edit_product_review_url(product_review), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link product_review end -->
+
+      <!-- Delete link product_review start -->
+      <div class="col">
+        <%= link_to product_review, method: :delete, data: { confirm: "Do you really want to delete this product_review?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link product_review end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(product_review.updated_at) %> ago
+  </div>
+</div>
