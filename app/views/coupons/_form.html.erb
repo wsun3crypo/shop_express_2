@@ -2,30 +2,9 @@
 
 <%= form_with(model: coupon, local: true, novalidate: true, class: "mb-3") do |f| %>
   <!-- Label and input for merchants_id start -->
-  <div class="form-group">
-    <% merchant_class = "form-control" %>
-    <% merchant_was_invalid = coupon.errors.include?(:merchant) %>
-
-    <% if was_validated %>
-      <% if merchant_was_invalid %>
-        <% merchant_class << " is-invalid" %>
-      <% else %>
-        <% merchant_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :merchants_id %>
-    <!-- Input for merchants_id start -->
-    <%= f.collection_select :merchants_id, Merchant.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for merchants_id end -->
-    <% if merchant_was_invalid %>
-      <% coupon.errors.full_messages_for(:merchant).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "merchants_id" start -->
+  <%= f.hidden_field :merchants_id, value: current_merchant.id %>
+  <!-- Input for "merchants_id" end -->
   <!-- Label and input for merchants_id end -->
   <!-- Label and input for amount start -->
   <div class="form-group">
