@@ -68,7 +68,7 @@
 
     <%= f.label :customers_id %>
     <!-- Input for customers_id start -->
-    <%= f.number_field :customers_id, class: customer_class, placeholder: "Enter customer" %>
+    <%= f.collection_select :customers_id, Customer.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for customers_id end -->
     <% if customer_was_invalid %>
       <% purchased_product.errors.full_messages_for(:customer).each do |message| %>
