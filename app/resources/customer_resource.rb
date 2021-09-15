@@ -7,6 +7,9 @@ class CustomerResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :assigned_coupons,
+             foreign_key: :customers_id
+
   has_many   :received_many_friends_request,
              resource: CustomerFriendResource,
              foreign_key: :receiver_id

@@ -7,6 +7,9 @@ class AssignedCouponResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :customers,
+             resource: CustomerResource
+
   belongs_to :coupons,
              resource: CouponResource
 
