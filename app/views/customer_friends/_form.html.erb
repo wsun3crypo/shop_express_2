@@ -42,7 +42,7 @@
 
     <%= f.label :receiver_id %>
     <!-- Input for receiver_id start -->
-    <%= f.number_field :receiver_id, class: receiver_class, placeholder: "Enter receiver" %>
+    <%= f.collection_select :receiver_id, Customer.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for receiver_id end -->
     <% if receiver_was_invalid %>
       <% customer_friend.errors.full_messages_for(:receiver).each do |message| %>
