@@ -4,6 +4,8 @@ RSpec.describe Customer, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:assigned_coupons) }
+
     it { should have_many(:received_many_friends_request) }
 
     it { should have_many(:sent_many_friends_request) }
