@@ -4,6 +4,8 @@ RSpec.describe PurchasedProduct, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:productsreview) }
+
     it { should belong_to(:loyaltyprogram) }
 
     it { should belong_to(:customers) }

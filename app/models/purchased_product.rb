@@ -1,6 +1,9 @@
 class PurchasedProduct < ApplicationRecord
   # Direct associations
 
+  belongs_to :productsreview,
+             :class_name => "ProductReview"
+
   belongs_to :loyaltyprogram,
              :class_name => "LoyaltyProgram"
 
