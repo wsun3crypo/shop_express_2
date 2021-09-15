@@ -17,7 +17,11 @@
 
       <dt>Picture</dt>
       <!-- Display picture start -->
-      <dd><%= product.picture %></dd>
+      <dd>
+        <div>
+          <%= render partial: "products/one_photo_map" %>
+        </div>
+      </dd>
       <!-- Display picture end -->
 
       <dt>Price</dt>

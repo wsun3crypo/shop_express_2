@@ -4,6 +4,11 @@ class MerchantsController < ApplicationController
   # GET /merchants
   def index
     @merchants = Merchant.all
+    @location_hash = Gmaps4rails.build_markers(@merchants.where.not(:picture_latitude => nil)) do |merchant, marker|
+      marker.lat merchant.picture_latitude
+      marker.lng merchant.picture_longitude
+      marker.infowindow "<h5><a href='/merchants/#{merchant.id}'>#{merchant.created_at}</a></h5><small>#{merchant.picture_formatted_address}</small>"
+    end
   end
 
   # GET /merchants/1

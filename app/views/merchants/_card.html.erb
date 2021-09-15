@@ -27,7 +27,11 @@
 
       <dt>Picture</dt>
       <!-- Display picture start -->
-      <dd><%= merchant.picture %></dd>
+      <dd>
+        <div>
+          <%= render partial: "merchants/one_photo_map" %>
+        </div>
+      </dd>
       <!-- Display picture end -->
 
     </dl>
