@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :merchant_partnerships
   resources :loyalty_programs
   devise_for :customers
   resources :customers
