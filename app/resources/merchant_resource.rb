@@ -12,6 +12,9 @@ class MerchantResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :coupons,
+             foreign_key: :merchants_id
+
   # Indirect associations
 
 end
