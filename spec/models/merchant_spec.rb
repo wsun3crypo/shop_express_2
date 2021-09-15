@@ -4,6 +4,8 @@ RSpec.describe Merchant, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:coupons) }
+
     end
 
     describe "InDirect Associations" do

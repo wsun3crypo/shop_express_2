@@ -1,6 +1,10 @@
 class Merchant < ApplicationRecord
   # Direct associations
 
+  has_many   :coupons,
+             :foreign_key => "merchants_id",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
