@@ -11,6 +11,9 @@ class PurchasedProductResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :productsreview,
+             resource: ProductReviewResource
+
   belongs_to :loyaltyprogram,
              resource: LoyaltyProgramResource
 

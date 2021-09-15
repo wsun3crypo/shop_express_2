@@ -7,6 +7,9 @@ class ProductReviewResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :purchased_products,
+             foreign_key: :productsreview_id
+
   belongs_to :customers,
              resource: CustomerResource
 
