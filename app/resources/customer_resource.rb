@@ -29,6 +29,22 @@ class CustomerResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :senders, resource: CustomerResource do
+    assign_each do |customer, customers|
+      customers.select do |c|
+        c.id.in?(customer.senders.map(&:id))
+      end
+    end
+  end
+
+  has_many :receivers, resource: CustomerResource do
+    assign_each do |customer, customers|
+      customers.select do |c|
+        c.id.in?(customer.receivers.map(&:id))
+      end
+    end
+  end
+
   has_many :merchants_dealings, resource: MerchantResource do
     assign_each do |customer, merchants|
       merchants.select do |m|
@@ -41,6 +57,18 @@ class CustomerResource < ApplicationResource
   filter :products_id, :integer do
     eq do |scope, value|
       scope.eager_load(:merchants_dealings).where(:purchased_products => {:products_id => value})
+    end
+  end
+
+  filter :sender_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:senders).where(:customer_friends => {:sender_id => value})
+    end
+  end
+
+  filter :receiver_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:receivers).where(:customer_friends => {:receiver_id => value})
     end
   end
 end
