@@ -1,6 +1,9 @@
 class LoyaltyProgram < ApplicationRecord
   # Direct associations
 
+  belongs_to :merchants,
+             :class_name => "Merchant"
+
   # Indirect associations
 
   # Validations
