@@ -1,25 +1,20 @@
 class PurchasedProductsController < ApplicationController
   before_action :set_purchased_product, only: %i[show edit update destroy]
 
-  # GET /purchased_products
   def index
     @q = PurchasedProduct.ransack(params[:q])
     @purchased_products = @q.result(distinct: true).includes(:coupons,
                                                              :products, :customers, :loyaltyprogram, :productsreview, :merchant).page(params[:page]).per(10)
   end
 
-  # GET /purchased_products/1
   def show; end
 
-  # GET /purchased_products/new
   def new
     @purchased_product = PurchasedProduct.new
   end
 
-  # GET /purchased_products/1/edit
   def edit; end
 
-  # POST /purchased_products
   def create
     @purchased_product = PurchasedProduct.new(purchased_product_params)
 
@@ -35,7 +30,6 @@ class PurchasedProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /purchased_products/1
   def update
     if @purchased_product.update(purchased_product_params)
       redirect_to @purchased_product,
@@ -45,7 +39,6 @@ class PurchasedProductsController < ApplicationController
     end
   end
 
-  # DELETE /purchased_products/1
   def destroy
     @purchased_product.destroy
     message = "PurchasedProduct was successfully deleted."
@@ -58,12 +51,10 @@ class PurchasedProductsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_purchased_product
     @purchased_product = PurchasedProduct.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def purchased_product_params
     params.require(:purchased_product).permit(:products_id, :coupons_id,
                                               :customers_id, :quantity, :loyaltyprogram_id, :productsreview_id)

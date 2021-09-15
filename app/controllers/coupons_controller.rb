@@ -4,28 +4,23 @@ class CouponsController < ApplicationController
 
   before_action :set_coupon, only: %i[show edit update destroy]
 
-  # GET /coupons
   def index
     @q = Coupon.ransack(params[:q])
     @coupons = @q.result(distinct: true).includes(:merchants,
                                                   :purchased_products, :assigned_coupons).page(params[:page]).per(10)
   end
 
-  # GET /coupons/1
   def show
     @assigned_coupon = AssignedCoupon.new
     @purchased_product = PurchasedProduct.new
   end
 
-  # GET /coupons/new
   def new
     @coupon = Coupon.new
   end
 
-  # GET /coupons/1/edit
   def edit; end
 
-  # POST /coupons
   def create
     @coupon = Coupon.new(coupon_params)
 
@@ -41,7 +36,6 @@ class CouponsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /coupons/1
   def update
     if @coupon.update(coupon_params)
       redirect_to @coupon, notice: "Coupon was successfully updated."
@@ -50,7 +44,6 @@ class CouponsController < ApplicationController
     end
   end
 
-  # DELETE /coupons/1
   def destroy
     @coupon.destroy
     message = "Coupon was successfully deleted."
@@ -71,12 +64,10 @@ class CouponsController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_coupon
     @coupon = Coupon.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def coupon_params
     params.require(:coupon).permit(:merchants_id, :amount, :expiry_date)
   end

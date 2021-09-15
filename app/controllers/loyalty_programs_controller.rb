@@ -1,27 +1,22 @@
 class LoyaltyProgramsController < ApplicationController
   before_action :set_loyalty_program, only: %i[show edit update destroy]
 
-  # GET /loyalty_programs
   def index
     @q = LoyaltyProgram.ransack(params[:q])
     @loyalty_programs = @q.result(distinct: true).includes(:merchants,
                                                            :customers, :purchased_products).page(params[:page]).per(10)
   end
 
-  # GET /loyalty_programs/1
   def show
     @purchased_product = PurchasedProduct.new
   end
 
-  # GET /loyalty_programs/new
   def new
     @loyalty_program = LoyaltyProgram.new
   end
 
-  # GET /loyalty_programs/1/edit
   def edit; end
 
-  # POST /loyalty_programs
   def create
     @loyalty_program = LoyaltyProgram.new(loyalty_program_params)
 
@@ -37,7 +32,6 @@ class LoyaltyProgramsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /loyalty_programs/1
   def update
     if @loyalty_program.update(loyalty_program_params)
       redirect_to @loyalty_program,
@@ -47,7 +41,6 @@ class LoyaltyProgramsController < ApplicationController
     end
   end
 
-  # DELETE /loyalty_programs/1
   def destroy
     @loyalty_program.destroy
     message = "LoyaltyProgram was successfully deleted."
@@ -60,12 +53,10 @@ class LoyaltyProgramsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_loyalty_program
     @loyalty_program = LoyaltyProgram.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def loyalty_program_params
     params.require(:loyalty_program).permit(:merchants_id, :customers_id)
   end
