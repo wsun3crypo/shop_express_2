@@ -29,16 +29,20 @@
 
       <!-- Edit link coupon start -->
       <div class="col">
-        <%= link_to edit_coupon_url(coupon), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_merchant == @coupon.merchants %>
+          <%= link_to edit_coupon_url(coupon), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link coupon end -->
 
       <!-- Delete link coupon start -->
       <div class="col">
-        <%= link_to coupon, method: :delete, data: { confirm: "Do you really want to delete this coupon?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_merchant == @coupon.merchants %>
+          <%= link_to coupon, method: :delete, data: { confirm: "Do you really want to delete this coupon?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link coupon end -->

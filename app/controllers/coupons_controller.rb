@@ -1,4 +1,6 @@
 class CouponsController < ApplicationController
+  before_action :current_merchant_must_be_coupon_merchants, only: [:edit, :update, :destroy] 
+
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
 
   # GET /coupons
@@ -59,6 +61,14 @@ class CouponsController < ApplicationController
 
 
   private
+
+  def current_merchant_must_be_coupon_merchants
+    set_coupon
+    unless current_merchant == @coupon.merchants
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_coupon
       @coupon = Coupon.find(params[:id])
