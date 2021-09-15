@@ -1,6 +1,10 @@
 class Customer < ApplicationRecord
   # Direct associations
 
+  has_many   :purchased_products,
+             :foreign_key => "customers_id",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
