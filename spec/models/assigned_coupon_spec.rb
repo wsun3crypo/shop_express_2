@@ -4,6 +4,8 @@ RSpec.describe AssignedCoupon, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:coupons) }
+
     end
 
     describe "InDirect Associations" do
