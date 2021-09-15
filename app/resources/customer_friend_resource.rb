@@ -7,6 +7,9 @@ class CustomerFriendResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :receiver,
+             resource: CustomerResource
+
   belongs_to :sender,
              resource: CustomerResource
 
