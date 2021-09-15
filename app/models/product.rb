@@ -1,6 +1,9 @@
 class Product < ApplicationRecord
   # Direct associations
 
+  has_many   :purchased_products,
+             :foreign_key => "products_id"
+
   belongs_to :merchants,
              :class_name => "Merchant"
 

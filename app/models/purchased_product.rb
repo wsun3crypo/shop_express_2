@@ -1,6 +1,10 @@
 class PurchasedProduct < ApplicationRecord
   # Direct associations
 
+  belongs_to :products,
+             :class_name => "Product",
+             :counter_cache => true
+
   belongs_to :coupons,
              :required => false,
              :class_name => "Coupon",
