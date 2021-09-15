@@ -42,8 +42,14 @@ class LoyaltyProgramsController < ApplicationController
   # DELETE /loyalty_programs/1
   def destroy
     @loyalty_program.destroy
-    redirect_to loyalty_programs_url, notice: 'Loyalty program was successfully destroyed.'
+    message = "LoyaltyProgram was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to loyalty_programs_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

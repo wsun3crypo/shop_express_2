@@ -42,8 +42,14 @@ class CouponsController < ApplicationController
   # DELETE /coupons/1
   def destroy
     @coupon.destroy
-    redirect_to coupons_url, notice: 'Coupon was successfully destroyed.'
+    message = "Coupon was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to coupons_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

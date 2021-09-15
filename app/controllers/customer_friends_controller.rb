@@ -42,8 +42,14 @@ class CustomerFriendsController < ApplicationController
   # DELETE /customer_friends/1
   def destroy
     @customer_friend.destroy
-    redirect_to customer_friends_url, notice: 'Customer friend was successfully destroyed.'
+    message = "CustomerFriend was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to customer_friends_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

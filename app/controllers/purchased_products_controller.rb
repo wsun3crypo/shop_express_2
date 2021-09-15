@@ -42,8 +42,14 @@ class PurchasedProductsController < ApplicationController
   # DELETE /purchased_products/1
   def destroy
     @purchased_product.destroy
-    redirect_to purchased_products_url, notice: 'Purchased product was successfully destroyed.'
+    message = "PurchasedProduct was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to purchased_products_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

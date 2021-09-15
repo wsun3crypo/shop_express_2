@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Loyalty Programs
+
+    <a data-toggle="collapse" href="#customer_loyalty_programs_new_form">
+      Add loyalty program
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @customer.loyalty_programs.each do |loyalty_program| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to loyalty_program, loyalty_program %>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="customer_loyalty_programs_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

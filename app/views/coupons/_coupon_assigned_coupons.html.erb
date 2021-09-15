@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Assigned Coupons
+
+    <a data-toggle="collapse" href="#coupon_assigned_coupons_new_form">
+      Add assigned coupon
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @coupon.assigned_coupons.each do |assigned_coupon| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to assigned_coupon, assigned_coupon %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to assigned_coupon, method: :delete, data: { confirm: "Do you really want to delete this assigned_coupon" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="coupon_assigned_coupons_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>
