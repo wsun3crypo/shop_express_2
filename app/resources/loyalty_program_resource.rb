@@ -7,6 +7,9 @@ class LoyaltyProgramResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :customers,
+             resource: CustomerResource
+
   belongs_to :merchants,
              resource: MerchantResource
 
