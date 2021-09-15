@@ -1,0 +1,57 @@
+<% was_validated = loyalty_program.errors.any? %>
+
+<%= form_with(model: loyalty_program, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for merchants_id start -->
+  <div class="form-group">
+    <% merchant_class = "form-control" %>
+    <% merchant_was_invalid = loyalty_program.errors.include?(:merchant) %>
+
+    <% if was_validated %>
+      <% if merchant_was_invalid %>
+        <% merchant_class << " is-invalid" %>
+      <% else %>
+        <% merchant_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :merchants_id %>
+    <!-- Input for merchants_id start -->
+    <%= f.number_field :merchants_id, class: merchant_class, placeholder: "Enter merchant" %>
+    <!-- Input for merchants_id end -->
+    <% if merchant_was_invalid %>
+      <% loyalty_program.errors.full_messages_for(:merchant).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for merchants_id end -->
+  <!-- Label and input for customers_id start -->
+  <div class="form-group">
+    <% customer_class = "form-control" %>
+    <% customer_was_invalid = loyalty_program.errors.include?(:customer) %>
+
+    <% if was_validated %>
+      <% if customer_was_invalid %>
+        <% customer_class << " is-invalid" %>
+      <% else %>
+        <% customer_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :customers_id %>
+    <!-- Input for customers_id start -->
+    <%= f.number_field :customers_id, class: customer_class, placeholder: "Enter customer" %>
+    <!-- Input for customers_id end -->
+    <% if customer_was_invalid %>
+      <% loyalty_program.errors.full_messages_for(:customer).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for customers_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
