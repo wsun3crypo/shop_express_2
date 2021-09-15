@@ -20,6 +20,10 @@ RSpec.describe Customer, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:senders) }
+
+    it { should have_many(:receivers) }
+
     it { should have_many(:merchants_dealings) }
 
     end
