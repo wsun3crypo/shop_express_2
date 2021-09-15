@@ -4,6 +4,8 @@ RSpec.describe LoyaltyProgram, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:customers) }
+
     it { should belong_to(:merchants) }
 
     end
