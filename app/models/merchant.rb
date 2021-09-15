@@ -26,6 +26,10 @@ class Merchant < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :customers_dealings,
+             :through => :purchased_products,
+             :source => :customers
+
   # Validations
 
   # Scopes
