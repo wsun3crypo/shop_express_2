@@ -1,22 +1,12 @@
-<!-- Form product_review start -->
 <%= form_with(model: @product_review, local: true) do |f| %>
-<!-- Form product_review end -->
 
-  <!-- Label and input for review start -->
   <div class="form-group">
     <%= f.label :review %>
 
-    <!-- Input for review start -->
     <%= f.text_field :review, class: "form-control" %>
-    <!-- Input for review end -->
   </div>
-  <!-- Label and input for review end -->
 
-  <!-- Label and input for customers_id start -->
-  <!-- Input for customers_id start -->
   <%= f.hidden_field :customers_id, value: @customer.id %>
-  <!-- Input for customers_id end -->
-  <!-- Label and input for customers_id end -->
 
   <%= f.submit "Create product review", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

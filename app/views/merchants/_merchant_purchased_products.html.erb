@@ -6,11 +6,9 @@
   <ul class="list-group list-group-flush">
     <% @merchant.purchased_products.each do |purchased_product| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <a href="/purchased_products/<%= purchased_product.id %>">
           <%= purchased_product %>
         </a>
-        <!-- Show link end -->
 
       </li>
     <% end %>

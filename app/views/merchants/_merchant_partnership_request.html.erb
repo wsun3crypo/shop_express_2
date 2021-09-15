@@ -10,18 +10,14 @@
   <ul class="list-group list-group-flush">
     <% @merchant.partnership_request.each do |merchant_partnership| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to merchant_partnership, merchant_partnership %>
-        <!-- Show link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="merchant_partnership_request_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "merchants/merchant_partnership_request_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

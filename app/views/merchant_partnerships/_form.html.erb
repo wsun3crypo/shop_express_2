@@ -1,7 +1,6 @@
 <% was_validated = merchant_partnership.errors.any? %>
 
 <%= form_with(model: merchant_partnership, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for sender_id start -->
   <div class="form-group">
     <% sender_class = "form-control" %>
     <% sender_was_invalid = merchant_partnership.errors.include?(:sender) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :sender_id %>
-    <!-- Input for sender_id start -->
     <%= f.collection_select :sender_id, Merchant.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for sender_id end -->
     <% if sender_was_invalid %>
       <% merchant_partnership.errors.full_messages_for(:sender).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for sender_id end -->
-  <!-- Label and input for receiver_id start -->
   <div class="form-group">
     <% receiver_class = "form-control" %>
     <% receiver_was_invalid = merchant_partnership.errors.include?(:receiver) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :receiver_id %>
-    <!-- Input for receiver_id start -->
     <%= f.collection_select :receiver_id, Merchant.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for receiver_id end -->
     <% if receiver_was_invalid %>
       <% merchant_partnership.errors.full_messages_for(:receiver).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for receiver_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

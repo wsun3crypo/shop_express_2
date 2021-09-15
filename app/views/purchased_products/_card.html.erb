@@ -6,54 +6,42 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Products</dt>
-      <!-- Display products_id start -->
       <dd>
         <% if @purchased_product.products.present? %>
           <%= link_to purchased_product.products, purchased_product.products %>
         <% end %>
       </dd>
-      <!-- Display products_id end -->
 
       <dt>Coupons</dt>
-      <!-- Display coupons_id start -->
       <dd>
         <% if @purchased_product.coupons.present? %>
           <%= link_to purchased_product.coupons, purchased_product.coupons %>
         <% end %>
       </dd>
-      <!-- Display coupons_id end -->
 
       <dt>Customers</dt>
-      <!-- Display customers_id start -->
       <dd>
         <% if @purchased_product.customers.present? %>
           <%= link_to purchased_product.customers, purchased_product.customers %>
         <% end %>
       </dd>
-      <!-- Display customers_id end -->
 
       <dt>Quantity</dt>
-      <!-- Display quantity start -->
       <dd><%= purchased_product.quantity %></dd>
-      <!-- Display quantity end -->
 
       <dt>Loyaltyprogram</dt>
-      <!-- Display loyaltyprogram_id start -->
       <dd>
         <% if @purchased_product.loyaltyprogram.present? %>
           <%= link_to purchased_product.loyaltyprogram, purchased_product.loyaltyprogram %>
         <% end %>
       </dd>
-      <!-- Display loyaltyprogram_id end -->
 
       <dt>Productsreview</dt>
-      <!-- Display productsreview_id start -->
       <dd>
         <% if @purchased_product.productsreview.present? %>
           <%= link_to purchased_product.productsreview, purchased_product.productsreview %>
         <% end %>
       </dd>
-      <!-- Display productsreview_id end -->
 
     </dl>
 
@@ -62,21 +50,17 @@
         <%= link_to_show_or_back purchased_product, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link purchased_product start -->
       <div class="col">
         <%= link_to edit_purchased_product_url(purchased_product), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link purchased_product end -->
 
-      <!-- Delete link purchased_product start -->
       <div class="col">
         <%= link_to purchased_product, method: :delete, data: { confirm: "Do you really want to delete this purchased_product?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link purchased_product end -->
     </div>
   </div>
 

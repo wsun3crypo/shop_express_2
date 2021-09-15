@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @coupon.purchased_products.each do |purchased_product| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to purchased_product, purchased_product %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to purchased_product, method: :delete, data: { confirm: "Do you really want to delete this purchased_product" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="coupon_purchased_products_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "coupons/coupon_purchased_products_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

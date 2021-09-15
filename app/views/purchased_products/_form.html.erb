@@ -1,7 +1,6 @@
 <% was_validated = purchased_product.errors.any? %>
 
 <%= form_with(model: purchased_product, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for products_id start -->
   <div class="form-group">
     <% product_class = "form-control" %>
     <% product_was_invalid = purchased_product.errors.include?(:product) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :products_id %>
-    <!-- Input for products_id start -->
     <%= f.collection_select :products_id, Product.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for products_id end -->
     <% if product_was_invalid %>
       <% purchased_product.errors.full_messages_for(:product).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for products_id end -->
-  <!-- Label and input for coupons_id start -->
   <div class="form-group">
     <% coupon_class = "form-control" %>
     <% coupon_was_invalid = purchased_product.errors.include?(:coupon) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :coupons_id %>
-    <!-- Input for coupons_id start -->
     <%= f.collection_select :coupons_id, Coupon.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for coupons_id end -->
     <% if coupon_was_invalid %>
       <% purchased_product.errors.full_messages_for(:coupon).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for coupons_id end -->
-  <!-- Label and input for customers_id start -->
   <div class="form-group">
     <% customer_class = "form-control" %>
     <% customer_was_invalid = purchased_product.errors.include?(:customer) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :customers_id %>
-    <!-- Input for customers_id start -->
     <%= f.collection_select :customers_id, Customer.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for customers_id end -->
     <% if customer_was_invalid %>
       <% purchased_product.errors.full_messages_for(:customer).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for customers_id end -->
-  <!-- Label and input for quantity start -->
   <div class="form-group">
     <% quantity_class = "form-control" %>
     <% quantity_was_invalid = purchased_product.errors.include?(:quantity) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :quantity %>
-    <!-- Input for quantity start -->
     <%= f.text_field :quantity, class: quantity_class, placeholder: "Enter quantity" %>
-    <!-- Input for quantity end -->
     <% if quantity_was_invalid %>
       <% purchased_product.errors.full_messages_for(:quantity).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for quantity end -->
-  <!-- Label and input for loyaltyprogram_id start -->
   <div class="form-group">
     <% loyaltyprogram_class = "form-control" %>
     <% loyaltyprogram_was_invalid = purchased_product.errors.include?(:loyaltyprogram) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :loyaltyprogram_id %>
-    <!-- Input for loyaltyprogram_id start -->
     <%= f.collection_select :loyaltyprogram_id, LoyaltyProgram.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for loyaltyprogram_id end -->
     <% if loyaltyprogram_was_invalid %>
       <% purchased_product.errors.full_messages_for(:loyaltyprogram).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,8 +111,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for loyaltyprogram_id end -->
-  <!-- Label and input for productsreview_id start -->
   <div class="form-group">
     <% productsreview_class = "form-control" %>
     <% productsreview_was_invalid = purchased_product.errors.include?(:productsreview) %>
@@ -145,9 +124,7 @@
     <% end %>
 
     <%= f.label :productsreview_id %>
-    <!-- Input for productsreview_id start -->
     <%= f.collection_select :productsreview_id, ProductReview.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for productsreview_id end -->
     <% if productsreview_was_invalid %>
       <% purchased_product.errors.full_messages_for(:productsreview).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -156,6 +133,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for productsreview_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

@@ -1,22 +1,12 @@
-<!-- Form loyalty_program start -->
 <%= form_with(model: @loyalty_program, local: true) do |f| %>
-<!-- Form loyalty_program end -->
 
-  <!-- Label and input for merchants_id start -->
   <div class="form-group">
     <%= f.label :merchants_id %>
 
-    <!-- Input for merchants_id start -->
     <%= f.collection_select :merchants_id, Merchant.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for merchants_id end -->
   </div>
-  <!-- Label and input for merchants_id end -->
 
-  <!-- Label and input for customers_id start -->
-  <!-- Input for customers_id start -->
   <%= f.hidden_field :customers_id, value: @customer.id %>
-  <!-- Input for customers_id end -->
-  <!-- Label and input for customers_id end -->
 
   <%= f.submit "Create loyalty program", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

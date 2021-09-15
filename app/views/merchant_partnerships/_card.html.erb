@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Sender</dt>
-      <!-- Display sender_id start -->
       <dd>
         <% if @merchant_partnership.sender.present? %>
           <%= link_to merchant_partnership.sender, merchant_partnership.sender %>
         <% end %>
       </dd>
-      <!-- Display sender_id end -->
 
       <dt>Receiver</dt>
-      <!-- Display receiver_id start -->
       <dd>
         <% if @merchant_partnership.receiver.present? %>
           <%= link_to merchant_partnership.receiver, merchant_partnership.receiver %>
         <% end %>
       </dd>
-      <!-- Display receiver_id end -->
 
     </dl>
 
@@ -30,21 +26,17 @@
         <%= link_to_show_or_back merchant_partnership, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link merchant_partnership start -->
       <div class="col">
         <%= link_to edit_merchant_partnership_url(merchant_partnership), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link merchant_partnership end -->
 
-      <!-- Delete link merchant_partnership start -->
       <div class="col">
         <%= link_to merchant_partnership, method: :delete, data: { confirm: "Do you really want to delete this merchant_partnership?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link merchant_partnership end -->
     </div>
   </div>
 

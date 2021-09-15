@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Sender</dt>
-      <!-- Display sender_id start -->
       <dd>
         <% if @customer_friend.sender.present? %>
           <%= link_to customer_friend.sender, customer_friend.sender %>
         <% end %>
       </dd>
-      <!-- Display sender_id end -->
 
       <dt>Receiver</dt>
-      <!-- Display receiver_id start -->
       <dd>
         <% if @customer_friend.receiver.present? %>
           <%= link_to customer_friend.receiver, customer_friend.receiver %>
         <% end %>
       </dd>
-      <!-- Display receiver_id end -->
 
     </dl>
 
@@ -30,21 +26,17 @@
         <%= link_to_show_or_back customer_friend, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link customer_friend start -->
       <div class="col">
         <%= link_to edit_customer_friend_url(customer_friend), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link customer_friend end -->
 
-      <!-- Delete link customer_friend start -->
       <div class="col">
         <%= link_to customer_friend, method: :delete, data: { confirm: "Do you really want to delete this customer_friend?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link customer_friend end -->
     </div>
   </div>
 

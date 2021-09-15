@@ -1,7 +1,6 @@
 <% was_validated = product_review.errors.any? %>
 
 <%= form_with(model: product_review, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for review start -->
   <div class="form-group">
     <% review_class = "form-control" %>
     <% review_was_invalid = product_review.errors.include?(:review) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :review %>
-    <!-- Input for review start -->
     <%= f.text_field :review, class: review_class, placeholder: "Enter review" %>
-    <!-- Input for review end -->
     <% if review_was_invalid %>
       <% product_review.errors.full_messages_for(:review).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for review end -->
-  <!-- Label and input for customers_id start -->
   <div class="form-group">
     <% customer_class = "form-control" %>
     <% customer_was_invalid = product_review.errors.include?(:customer) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :customers_id %>
-    <!-- Input for customers_id start -->
     <%= f.collection_select :customers_id, Customer.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for customers_id end -->
     <% if customer_was_invalid %>
       <% product_review.errors.full_messages_for(:customer).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for customers_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

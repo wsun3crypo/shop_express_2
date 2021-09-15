@@ -10,18 +10,14 @@
   <ul class="list-group list-group-flush">
     <% @merchant.coupons.each do |coupon| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to coupon, coupon %>
-        <!-- Show link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="merchant_coupons_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "merchants/merchant_coupons_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

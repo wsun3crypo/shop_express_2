@@ -7,9 +7,7 @@
 
       <div class="card-body">
         <% was_validated = resource.errors.any? %>
-        <!-- Form html options start -->
         <% form_html_options = { novalidate: true, class: "mb-3" } %>
-        <!-- Form html options end -->
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: form_html_options) do |f| %>
 
           <div class="form-group">
@@ -91,7 +89,6 @@
           </div>
 
 
-          <!-- Devise Input for name start -->
           <div class="form-group">
             <% name_was_invalid = resource.errors.include?(:name) %>
 
@@ -117,9 +114,7 @@
               <% end %>
             <% end %>
           </div>
-          <!-- Devise Input for name end -->
 
-          <!-- Devise Input for description start -->
           <div class="form-group">
             <% description_was_invalid = resource.errors.include?(:description) %>
 
@@ -145,9 +140,7 @@
               <% end %>
             <% end %>
           </div>
-          <!-- Devise Input for description end -->
 
-          <!-- Devise Input for address start -->
           <div class="form-group">
             <% address_was_invalid = resource.errors.include?(:address) %>
 
@@ -173,9 +166,7 @@
               <% end %>
             <% end %>
           </div>
-          <!-- Devise Input for address end -->
 
-          <!-- Devise Input for tel start -->
           <div class="form-group">
             <% tel_was_invalid = resource.errors.include?(:tel) %>
 
@@ -201,9 +192,7 @@
               <% end %>
             <% end %>
           </div>
-          <!-- Devise Input for tel end -->
 
-          <!-- Devise Input for picture start -->
           <div class="form-group">
             <% picture_was_invalid = resource.errors.include?(:picture) %>
 
@@ -229,7 +218,6 @@
               <% end %>
             <% end %>
           </div>
-          <!-- Devise Input for picture end -->
           <%= f.button class: "btn btn-outline-primary btn-block" %>
 
           <hr>

@@ -1,22 +1,12 @@
-<!-- Form merchant_partnership start -->
 <%= form_with(model: @merchant_partnership, local: true) do |f| %>
-<!-- Form merchant_partnership end -->
 
-  <!-- Label and input for sender_id start -->
-  <!-- Input for sender_id start -->
   <%= f.hidden_field :sender_id, value: @merchant.id %>
-  <!-- Input for sender_id end -->
-  <!-- Label and input for sender_id end -->
 
-  <!-- Label and input for receiver_id start -->
   <div class="form-group">
     <%= f.label :receiver_id %>
 
-    <!-- Input for receiver_id start -->
     <%= f.text_field :receiver_id, class: "form-control" %>
-    <!-- Input for receiver_id end -->
   </div>
-  <!-- Label and input for receiver_id end -->
 
   <%= f.submit "Create merchant partnership", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

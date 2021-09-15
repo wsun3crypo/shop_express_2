@@ -1,7 +1,6 @@
 <% was_validated = loyalty_program.errors.any? %>
 
 <%= form_with(model: loyalty_program, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for merchants_id start -->
   <div class="form-group">
     <% merchant_class = "form-control" %>
     <% merchant_was_invalid = loyalty_program.errors.include?(:merchant) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :merchants_id %>
-    <!-- Input for merchants_id start -->
     <%= f.collection_select :merchants_id, Merchant.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for merchants_id end -->
     <% if merchant_was_invalid %>
       <% loyalty_program.errors.full_messages_for(:merchant).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for merchants_id end -->
-  <!-- Label and input for customers_id start -->
   <div class="form-group">
     <% customer_class = "form-control" %>
     <% customer_was_invalid = loyalty_program.errors.include?(:customer) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :customers_id %>
-    <!-- Input for customers_id start -->
     <%= f.collection_select :customers_id, Customer.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for customers_id end -->
     <% if customer_was_invalid %>
       <% loyalty_program.errors.full_messages_for(:customer).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for customers_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

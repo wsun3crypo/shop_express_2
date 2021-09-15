@@ -1,62 +1,36 @@
-<!-- Form purchased_product start -->
 <%= form_with(model: @purchased_product, local: true) do |f| %>
-<!-- Form purchased_product end -->
 
-  <!-- Label and input for products_id start -->
   <div class="form-group">
     <%= f.label :products_id %>
 
-    <!-- Input for products_id start -->
     <%= f.collection_select :products_id, Product.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for products_id end -->
   </div>
-  <!-- Label and input for products_id end -->
 
-  <!-- Label and input for coupons_id start -->
-  <!-- Input for coupons_id start -->
   <%= f.hidden_field :coupons_id, value: @coupon.id %>
-  <!-- Input for coupons_id end -->
-  <!-- Label and input for coupons_id end -->
 
-  <!-- Label and input for customers_id start -->
   <div class="form-group">
     <%= f.label :customers_id %>
 
-    <!-- Input for customers_id start -->
     <%= f.collection_select :customers_id, Customer.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for customers_id end -->
   </div>
-  <!-- Label and input for customers_id end -->
 
-  <!-- Label and input for quantity start -->
   <div class="form-group">
     <%= f.label :quantity %>
 
-    <!-- Input for quantity start -->
     <%= f.text_field :quantity, class: "form-control" %>
-    <!-- Input for quantity end -->
   </div>
-  <!-- Label and input for quantity end -->
 
-  <!-- Label and input for loyaltyprogram_id start -->
   <div class="form-group">
     <%= f.label :loyaltyprogram_id %>
 
-    <!-- Input for loyaltyprogram_id start -->
     <%= f.collection_select :loyaltyprogram_id, LoyaltyProgram.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for loyaltyprogram_id end -->
   </div>
-  <!-- Label and input for loyaltyprogram_id end -->
 
-  <!-- Label and input for productsreview_id start -->
   <div class="form-group">
     <%= f.label :productsreview_id %>
 
-    <!-- Input for productsreview_id start -->
     <%= f.collection_select :productsreview_id, ProductReview.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for productsreview_id end -->
   </div>
-  <!-- Label and input for productsreview_id end -->
 
   <%= f.submit "Create purchased product", class: "btn btn-block btn-outline-secondary" %>
 <% end %>
