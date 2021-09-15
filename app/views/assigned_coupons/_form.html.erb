@@ -1,0 +1,57 @@
+<% was_validated = assigned_coupon.errors.any? %>
+
+<%= form_with(model: assigned_coupon, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for coupons_id start -->
+  <div class="form-group">
+    <% coupon_class = "form-control" %>
+    <% coupon_was_invalid = assigned_coupon.errors.include?(:coupon) %>
+
+    <% if was_validated %>
+      <% if coupon_was_invalid %>
+        <% coupon_class << " is-invalid" %>
+      <% else %>
+        <% coupon_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :coupons_id %>
+    <!-- Input for coupons_id start -->
+    <%= f.number_field :coupons_id, class: coupon_class, placeholder: "Enter coupon" %>
+    <!-- Input for coupons_id end -->
+    <% if coupon_was_invalid %>
+      <% assigned_coupon.errors.full_messages_for(:coupon).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for coupons_id end -->
+  <!-- Label and input for customers_id start -->
+  <div class="form-group">
+    <% customer_class = "form-control" %>
+    <% customer_was_invalid = assigned_coupon.errors.include?(:customer) %>
+
+    <% if was_validated %>
+      <% if customer_was_invalid %>
+        <% customer_class << " is-invalid" %>
+      <% else %>
+        <% customer_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :customers_id %>
+    <!-- Input for customers_id start -->
+    <%= f.number_field :customers_id, class: customer_class, placeholder: "Enter customer" %>
+    <!-- Input for customers_id end -->
+    <% if customer_was_invalid %>
+      <% assigned_coupon.errors.full_messages_for(:customer).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for customers_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
