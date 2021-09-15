@@ -42,7 +42,7 @@
 
     <%= f.label :coupons_id %>
     <!-- Input for coupons_id start -->
-    <%= f.number_field :coupons_id, class: coupon_class, placeholder: "Enter coupon" %>
+    <%= f.collection_select :coupons_id, Coupon.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for coupons_id end -->
     <% if coupon_was_invalid %>
       <% purchased_product.errors.full_messages_for(:coupon).each do |message| %>

@@ -17,7 +17,7 @@
     <%= f.label :coupons_id %>
 
     <!-- Input for coupons_id start -->
-    <%= f.text_field :coupons_id, class: "form-control" %>
+    <%= f.collection_select :coupons_id, Coupon.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for coupons_id end -->
   </div>
   <!-- Label and input for coupons_id end -->
