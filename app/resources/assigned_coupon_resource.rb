@@ -14,5 +14,4 @@ class AssignedCouponResource < ApplicationResource
              resource: CouponResource
 
   # Indirect associations
-
 end

@@ -1,9 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Customer, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should have_many(:product_reviews) }
 
     it { should have_many(:assigned_coupons) }
@@ -15,20 +13,16 @@ RSpec.describe Customer, type: :model do
     it { should have_many(:loyalty_programs) }
 
     it { should have_many(:purchased_products) }
+  end
 
-    end
-
-    describe "InDirect Associations" do
-
+  describe "InDirect Associations" do
     it { should have_many(:senders) }
 
     it { should have_many(:receivers) }
 
     it { should have_many(:merchants_dealings) }
+  end
 
-    end
-
-    describe "Validations" do
-
-    end
+  describe "Validations" do
+  end
 end

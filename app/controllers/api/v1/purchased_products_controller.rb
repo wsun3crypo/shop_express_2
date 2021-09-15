@@ -13,7 +13,7 @@ class Api::V1::PurchasedProductsController < Api::V1::GraphitiController
     purchased_product = PurchasedProductResource.build(params)
 
     if purchased_product.save
-      render jsonapi: purchased_product, status: 201
+      render jsonapi: purchased_product, status: :created
     else
       render jsonapi_errors: purchased_product
     end
@@ -33,7 +33,7 @@ class Api::V1::PurchasedProductsController < Api::V1::GraphitiController
     purchased_product = PurchasedProductResource.find(params)
 
     if purchased_product.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: purchased_product
     end

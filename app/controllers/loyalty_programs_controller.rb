@@ -1,10 +1,11 @@
 class LoyaltyProgramsController < ApplicationController
-  before_action :set_loyalty_program, only: [:show, :edit, :update, :destroy]
+  before_action :set_loyalty_program, only: %i[show edit update destroy]
 
   # GET /loyalty_programs
   def index
     @q = LoyaltyProgram.ransack(params[:q])
-    @loyalty_programs = @q.result(:distinct => true).includes(:merchants, :customers, :purchased_products).page(params[:page]).per(10)
+    @loyalty_programs = @q.result(distinct: true).includes(:merchants,
+                                                           :customers, :purchased_products).page(params[:page]).per(10)
   end
 
   # GET /loyalty_programs/1
@@ -18,17 +19,16 @@ class LoyaltyProgramsController < ApplicationController
   end
 
   # GET /loyalty_programs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /loyalty_programs
   def create
     @loyalty_program = LoyaltyProgram.new(loyalty_program_params)
 
     if @loyalty_program.save
-      message = 'LoyaltyProgram was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "LoyaltyProgram was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @loyalty_program, notice: message
       end
@@ -40,7 +40,8 @@ class LoyaltyProgramsController < ApplicationController
   # PATCH/PUT /loyalty_programs/1
   def update
     if @loyalty_program.update(loyalty_program_params)
-      redirect_to @loyalty_program, notice: 'Loyalty program was successfully updated.'
+      redirect_to @loyalty_program,
+                  notice: "Loyalty program was successfully updated."
     else
       render :edit
     end
@@ -50,22 +51,22 @@ class LoyaltyProgramsController < ApplicationController
   def destroy
     @loyalty_program.destroy
     message = "LoyaltyProgram was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to loyalty_programs_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_loyalty_program
-      @loyalty_program = LoyaltyProgram.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def loyalty_program_params
-      params.require(:loyalty_program).permit(:merchants_id, :customers_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_loyalty_program
+    @loyalty_program = LoyaltyProgram.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def loyalty_program_params
+    params.require(:loyalty_program).permit(:merchants_id, :customers_id)
+  end
 end

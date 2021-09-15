@@ -14,5 +14,4 @@ class MerchantPartnershipResource < ApplicationResource
              resource: MerchantResource
 
   # Indirect associations
-
 end

@@ -13,7 +13,7 @@ class Api::V1::CustomersController < Api::V1::GraphitiController
     customer = CustomerResource.build(params)
 
     if customer.save
-      render jsonapi: customer, status: 201
+      render jsonapi: customer, status: :created
     else
       render jsonapi_errors: customer
     end
@@ -33,7 +33,7 @@ class Api::V1::CustomersController < Api::V1::GraphitiController
     customer = CustomerResource.find(params)
 
     if customer.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: customer
     end

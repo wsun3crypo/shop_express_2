@@ -13,7 +13,7 @@ class Api::V1::CouponsController < Api::V1::GraphitiController
     coupon = CouponResource.build(params)
 
     if coupon.save
-      render jsonapi: coupon, status: 201
+      render jsonapi: coupon, status: :created
     else
       render jsonapi_errors: coupon
     end
@@ -33,7 +33,7 @@ class Api::V1::CouponsController < Api::V1::GraphitiController
     coupon = CouponResource.find(params)
 
     if coupon.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: coupon
     end

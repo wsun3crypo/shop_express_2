@@ -18,5 +18,4 @@ class CouponResource < ApplicationResource
              resource: MerchantResource
 
   # Indirect associations
-
 end

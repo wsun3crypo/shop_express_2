@@ -64,22 +64,21 @@ class MerchantResource < ApplicationResource
     end
   end
 
-
   filter :customers_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:customers_dealings).where(:purchased_products => {:customers_id => value})
+      scope.eager_load(:customers_dealings).where(purchased_products: { customers_id: value })
     end
   end
 
   filter :sender_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:senders).where(:merchant_partnerships => {:sender_id => value})
+      scope.eager_load(:senders).where(merchant_partnerships: { sender_id: value })
     end
   end
 
   filter :receiver_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:receivers).where(:merchant_partnerships => {:receiver_id => value})
+      scope.eager_load(:receivers).where(merchant_partnerships: { receiver_id: value })
     end
   end
 end

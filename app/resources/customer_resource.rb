@@ -53,22 +53,21 @@ class CustomerResource < ApplicationResource
     end
   end
 
-
   filter :products_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:merchants_dealings).where(:purchased_products => {:products_id => value})
+      scope.eager_load(:merchants_dealings).where(purchased_products: { products_id: value })
     end
   end
 
   filter :sender_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:senders).where(:customer_friends => {:sender_id => value})
+      scope.eager_load(:senders).where(customer_friends: { sender_id: value })
     end
   end
 
   filter :receiver_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:receivers).where(:customer_friends => {:receiver_id => value})
+      scope.eager_load(:receivers).where(customer_friends: { receiver_id: value })
     end
   end
 end

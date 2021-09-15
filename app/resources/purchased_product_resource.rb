@@ -32,7 +32,7 @@ class PurchasedProductResource < ApplicationResource
 
   filter :merchants_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:merchant).where(:products => {:merchants_id => value})
+      scope.eager_load(:merchant).where(products: { merchants_id: value })
     end
   end
 end

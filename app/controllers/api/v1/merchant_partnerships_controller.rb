@@ -13,7 +13,7 @@ class Api::V1::MerchantPartnershipsController < Api::V1::GraphitiController
     merchant_partnership = MerchantPartnershipResource.build(params)
 
     if merchant_partnership.save
-      render jsonapi: merchant_partnership, status: 201
+      render jsonapi: merchant_partnership, status: :created
     else
       render jsonapi_errors: merchant_partnership
     end
@@ -33,7 +33,7 @@ class Api::V1::MerchantPartnershipsController < Api::V1::GraphitiController
     merchant_partnership = MerchantPartnershipResource.find(params)
 
     if merchant_partnership.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: merchant_partnership
     end

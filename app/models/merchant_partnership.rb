@@ -2,10 +2,10 @@ class MerchantPartnership < ApplicationRecord
   # Direct associations
 
   belongs_to :receiver,
-             :class_name => "Merchant"
+             class_name: "Merchant"
 
   belongs_to :sender,
-             :class_name => "Merchant"
+             class_name: "Merchant"
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class MerchantPartnership < ApplicationRecord
   def to_s
     sender.to_s
   end
-
 end

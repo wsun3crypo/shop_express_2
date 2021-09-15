@@ -2,14 +2,14 @@ class Coupon < ApplicationRecord
   # Direct associations
 
   has_many   :assigned_coupons,
-             :foreign_key => "coupons_id",
-             :dependent => :destroy
+             foreign_key: "coupons_id",
+             dependent: :destroy
 
   has_many   :purchased_products,
-             :foreign_key => "coupons_id"
+             foreign_key: "coupons_id"
 
   belongs_to :merchants,
-             :class_name => "Merchant"
+             class_name: "Merchant"
 
   # Indirect associations
 
@@ -20,5 +20,4 @@ class Coupon < ApplicationRecord
   def to_s
     merchants.to_s
   end
-
 end

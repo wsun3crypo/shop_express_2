@@ -14,5 +14,4 @@ class CustomerFriendResource < ApplicationResource
              resource: CustomerResource
 
   # Indirect associations
-
 end

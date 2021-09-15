@@ -13,7 +13,7 @@ class Api::V1::MerchantsController < Api::V1::GraphitiController
     merchant = MerchantResource.build(params)
 
     if merchant.save
-      render jsonapi: merchant, status: 201
+      render jsonapi: merchant, status: :created
     else
       render jsonapi_errors: merchant
     end
@@ -33,7 +33,7 @@ class Api::V1::MerchantsController < Api::V1::GraphitiController
     merchant = MerchantResource.find(params)
 
     if merchant.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: merchant
     end

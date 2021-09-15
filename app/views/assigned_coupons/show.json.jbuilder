@@ -1,1 +1,2 @@
-json.partial! "assigned_coupons/assigned_coupon", assigned_coupon: @assigned_coupon
+json.partial! "assigned_coupons/assigned_coupon",
+              assigned_coupon: @assigned_coupon

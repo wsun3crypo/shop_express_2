@@ -16,5 +16,4 @@ class ProductResource < ApplicationResource
              resource: MerchantResource
 
   # Indirect associations
-
 end

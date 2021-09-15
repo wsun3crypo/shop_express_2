@@ -1,9 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Merchant, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should have_many(:received_partnership_request) }
 
     it { should have_many(:partnership_request) }
@@ -13,11 +11,9 @@ RSpec.describe Merchant, type: :model do
     it { should have_many(:products) }
 
     it { should have_many(:coupons) }
+  end
 
-    end
-
-    describe "InDirect Associations" do
-
+  describe "InDirect Associations" do
     it { should have_many(:senders) }
 
     it { should have_many(:receivers) }
@@ -25,10 +21,8 @@ RSpec.describe Merchant, type: :model do
     it { should have_many(:purchased_products) }
 
     it { should have_many(:customers_dealings) }
+  end
 
-    end
-
-    describe "Validations" do
-
-    end
+  describe "Validations" do
+  end
 end

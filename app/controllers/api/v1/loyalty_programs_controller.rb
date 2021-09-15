@@ -13,7 +13,7 @@ class Api::V1::LoyaltyProgramsController < Api::V1::GraphitiController
     loyalty_program = LoyaltyProgramResource.build(params)
 
     if loyalty_program.save
-      render jsonapi: loyalty_program, status: 201
+      render jsonapi: loyalty_program, status: :created
     else
       render jsonapi_errors: loyalty_program
     end
@@ -33,7 +33,7 @@ class Api::V1::LoyaltyProgramsController < Api::V1::GraphitiController
     loyalty_program = LoyaltyProgramResource.find(params)
 
     if loyalty_program.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: loyalty_program
     end

@@ -13,7 +13,7 @@ class Api::V1::AssignedCouponsController < Api::V1::GraphitiController
     assigned_coupon = AssignedCouponResource.build(params)
 
     if assigned_coupon.save
-      render jsonapi: assigned_coupon, status: 201
+      render jsonapi: assigned_coupon, status: :created
     else
       render jsonapi_errors: assigned_coupon
     end
@@ -33,7 +33,7 @@ class Api::V1::AssignedCouponsController < Api::V1::GraphitiController
     assigned_coupon = AssignedCouponResource.find(params)
 
     if assigned_coupon.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: assigned_coupon
     end

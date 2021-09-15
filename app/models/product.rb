@@ -1,10 +1,10 @@
-require 'open-uri'
+require "open-uri"
 class Product < ApplicationRecord
   before_validation :geocode_picture
 
   def geocode_picture
-    if self.picture.present?
-      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(self.picture)}"
+    if picture.present?
+      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(picture)}"
 
       raw_data = open(url).read
 
@@ -22,10 +22,10 @@ class Product < ApplicationRecord
   # Direct associations
 
   has_many   :purchased_products,
-             :foreign_key => "products_id"
+             foreign_key: "products_id"
 
   belongs_to :merchants,
-             :class_name => "Merchant"
+             class_name: "Merchant"
 
   # Indirect associations
 
@@ -36,5 +36,4 @@ class Product < ApplicationRecord
   def to_s
     merchants.to_s
   end
-
 end

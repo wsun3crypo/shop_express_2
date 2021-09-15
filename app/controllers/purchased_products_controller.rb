@@ -1,15 +1,15 @@
 class PurchasedProductsController < ApplicationController
-  before_action :set_purchased_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_purchased_product, only: %i[show edit update destroy]
 
   # GET /purchased_products
   def index
     @q = PurchasedProduct.ransack(params[:q])
-    @purchased_products = @q.result(:distinct => true).includes(:coupons, :products, :customers, :loyaltyprogram, :productsreview, :merchant).page(params[:page]).per(10)
+    @purchased_products = @q.result(distinct: true).includes(:coupons,
+                                                             :products, :customers, :loyaltyprogram, :productsreview, :merchant).page(params[:page]).per(10)
   end
 
   # GET /purchased_products/1
-  def show
-  end
+  def show; end
 
   # GET /purchased_products/new
   def new
@@ -17,17 +17,16 @@ class PurchasedProductsController < ApplicationController
   end
 
   # GET /purchased_products/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /purchased_products
   def create
     @purchased_product = PurchasedProduct.new(purchased_product_params)
 
     if @purchased_product.save
-      message = 'PurchasedProduct was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "PurchasedProduct was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @purchased_product, notice: message
       end
@@ -39,7 +38,8 @@ class PurchasedProductsController < ApplicationController
   # PATCH/PUT /purchased_products/1
   def update
     if @purchased_product.update(purchased_product_params)
-      redirect_to @purchased_product, notice: 'Purchased product was successfully updated.'
+      redirect_to @purchased_product,
+                  notice: "Purchased product was successfully updated."
     else
       render :edit
     end
@@ -49,22 +49,23 @@ class PurchasedProductsController < ApplicationController
   def destroy
     @purchased_product.destroy
     message = "PurchasedProduct was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to purchased_products_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_purchased_product
-      @purchased_product = PurchasedProduct.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def purchased_product_params
-      params.require(:purchased_product).permit(:products_id, :coupons_id, :customers_id, :quantity, :loyaltyprogram_id, :productsreview_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_purchased_product
+    @purchased_product = PurchasedProduct.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def purchased_product_params
+    params.require(:purchased_product).permit(:products_id, :coupons_id,
+                                              :customers_id, :quantity, :loyaltyprogram_id, :productsreview_id)
+  end
 end
