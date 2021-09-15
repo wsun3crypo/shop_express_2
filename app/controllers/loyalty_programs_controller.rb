@@ -3,7 +3,7 @@ class LoyaltyProgramsController < ApplicationController
 
   # GET /loyalty_programs
   def index
-    @loyalty_programs = LoyaltyProgram.all
+    @loyalty_programs = LoyaltyProgram.page(params[:page]).per(10)
   end
 
   # GET /loyalty_programs/1

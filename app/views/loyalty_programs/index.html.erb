@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @loyalty_programs, partial: "list_item", as: :loyalty_program %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @loyalty_programs, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>

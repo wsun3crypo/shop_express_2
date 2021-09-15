@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@products.where.not(:picture_latitude => nil)) do |product, marker|
       marker.lat product.picture_latitude
       marker.lng product.picture_longitude

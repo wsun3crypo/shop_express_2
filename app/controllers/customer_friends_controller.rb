@@ -3,7 +3,7 @@ class CustomerFriendsController < ApplicationController
 
   # GET /customer_friends
   def index
-    @customer_friends = CustomerFriend.all
+    @customer_friends = CustomerFriend.page(params[:page]).per(10)
   end
 
   # GET /customer_friends/1

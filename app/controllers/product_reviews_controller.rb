@@ -3,7 +3,7 @@ class ProductReviewsController < ApplicationController
 
   # GET /product_reviews
   def index
-    @product_reviews = ProductReview.all
+    @product_reviews = ProductReview.page(params[:page]).per(10)
   end
 
   # GET /product_reviews/1

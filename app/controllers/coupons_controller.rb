@@ -5,7 +5,7 @@ class CouponsController < ApplicationController
 
   # GET /coupons
   def index
-    @coupons = Coupon.all
+    @coupons = Coupon.page(params[:page]).per(10)
   end
 
   # GET /coupons/1

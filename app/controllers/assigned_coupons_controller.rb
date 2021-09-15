@@ -3,7 +3,7 @@ class AssignedCouponsController < ApplicationController
 
   # GET /assigned_coupons
   def index
-    @assigned_coupons = AssignedCoupon.all
+    @assigned_coupons = AssignedCoupon.page(params[:page]).per(10)
   end
 
   # GET /assigned_coupons/1

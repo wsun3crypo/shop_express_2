@@ -3,7 +3,7 @@ class MerchantPartnershipsController < ApplicationController
 
   # GET /merchant_partnerships
   def index
-    @merchant_partnerships = MerchantPartnership.all
+    @merchant_partnerships = MerchantPartnership.page(params[:page]).per(10)
   end
 
   # GET /merchant_partnerships/1
