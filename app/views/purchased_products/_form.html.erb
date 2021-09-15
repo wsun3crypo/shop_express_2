@@ -16,7 +16,7 @@
 
     <%= f.label :products_id %>
     <!-- Input for products_id start -->
-    <%= f.number_field :products_id, class: product_class, placeholder: "Enter product" %>
+    <%= f.collection_select :products_id, Product.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for products_id end -->
     <% if product_was_invalid %>
       <% purchased_product.errors.full_messages_for(:product).each do |message| %>
