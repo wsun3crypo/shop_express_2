@@ -1,6 +1,9 @@
 class CustomerFriend < ApplicationRecord
   # Direct associations
 
+  belongs_to :receiver,
+             :class_name => "Customer"
+
   belongs_to :sender,
              :class_name => "Customer"
 

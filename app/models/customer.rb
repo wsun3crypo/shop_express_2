@@ -1,6 +1,11 @@
 class Customer < ApplicationRecord
   # Direct associations
 
+  has_many   :received_many_friends_request,
+             :class_name => "CustomerFriend",
+             :foreign_key => "receiver_id",
+             :dependent => :destroy
+
   has_many   :sent_many_friends_request,
              :class_name => "CustomerFriend",
              :foreign_key => "sender_id",
