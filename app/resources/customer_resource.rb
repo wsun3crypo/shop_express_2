@@ -7,6 +7,10 @@ class CustomerResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :sent_many_friends_request,
+             resource: CustomerFriendResource,
+             foreign_key: :sender_id
+
   has_many   :loyalty_programs,
              foreign_key: :customers_id
 
