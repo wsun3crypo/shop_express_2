@@ -7,6 +7,9 @@ class ProductReviewResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :customers,
+             resource: CustomerResource
+
   # Indirect associations
 
 end

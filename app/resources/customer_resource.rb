@@ -7,6 +7,9 @@ class CustomerResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :product_reviews,
+             foreign_key: :customers_id
+
   has_many   :assigned_coupons,
              foreign_key: :customers_id
 
