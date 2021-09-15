@@ -12,6 +12,10 @@ class MerchantResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :partnership_request,
+             resource: MerchantPartnershipResource,
+             foreign_key: :sender_id
+
   has_many   :loyalty_members,
              resource: LoyaltyProgramResource,
              foreign_key: :merchants_id

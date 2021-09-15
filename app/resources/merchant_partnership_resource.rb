@@ -7,6 +7,9 @@ class MerchantPartnershipResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :sender,
+             resource: MerchantResource
+
   # Indirect associations
 
 end
