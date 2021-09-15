@@ -1,6 +1,9 @@
 class MerchantPartnership < ApplicationRecord
   # Direct associations
 
+  belongs_to :receiver,
+             :class_name => "Merchant"
+
   belongs_to :sender,
              :class_name => "Merchant"
 
