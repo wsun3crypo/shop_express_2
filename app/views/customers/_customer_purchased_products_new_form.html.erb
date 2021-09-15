@@ -43,7 +43,7 @@
     <%= f.label :loyaltyprogram_id %>
 
     <!-- Input for loyaltyprogram_id start -->
-    <%= f.text_field :loyaltyprogram_id, class: "form-control" %>
+    <%= f.collection_select :loyaltyprogram_id, LoyaltyProgram.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for loyaltyprogram_id end -->
   </div>
   <!-- Label and input for loyaltyprogram_id end -->

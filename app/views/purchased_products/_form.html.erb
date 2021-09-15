@@ -120,7 +120,7 @@
 
     <%= f.label :loyaltyprogram_id %>
     <!-- Input for loyaltyprogram_id start -->
-    <%= f.number_field :loyaltyprogram_id, class: loyaltyprogram_class, placeholder: "Enter loyaltyprogram" %>
+    <%= f.collection_select :loyaltyprogram_id, LoyaltyProgram.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for loyaltyprogram_id end -->
     <% if loyaltyprogram_was_invalid %>
       <% purchased_product.errors.full_messages_for(:loyaltyprogram).each do |message| %>
