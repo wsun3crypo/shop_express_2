@@ -16,7 +16,7 @@
 
     <%= f.label :merchants_id %>
     <!-- Input for merchants_id start -->
-    <%= f.number_field :merchants_id, class: merchant_class, placeholder: "Enter merchant" %>
+    <%= f.collection_select :merchants_id, Merchant.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for merchants_id end -->
     <% if merchant_was_invalid %>
       <% coupon.errors.full_messages_for(:merchant).each do |message| %>
