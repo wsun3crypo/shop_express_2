@@ -1,0 +1,56 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Product #<%= product.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Merchants</dt>
+      <!-- Display merchants_id start -->
+      <dd><%= product.merchants_id %></dd>
+      <!-- Display merchants_id end -->
+
+      <dt>Description</dt>
+      <!-- Display description start -->
+      <dd><%= product.description %></dd>
+      <!-- Display description end -->
+
+      <dt>Picture</dt>
+      <!-- Display picture start -->
+      <dd><%= product.picture %></dd>
+      <!-- Display picture end -->
+
+      <dt>Price</dt>
+      <!-- Display price start -->
+      <dd><%= product.price %></dd>
+      <!-- Display price end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back product, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link product start -->
+      <div class="col">
+        <%= link_to edit_product_url(product), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link product end -->
+
+      <!-- Delete link product start -->
+      <div class="col">
+        <%= link_to product, method: :delete, data: { confirm: "Do you really want to delete this product?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link product end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(product.updated_at) %> ago
+  </div>
+</div>
