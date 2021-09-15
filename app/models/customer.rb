@@ -1,6 +1,10 @@
 class Customer < ApplicationRecord
   # Direct associations
 
+  has_many   :product_reviews,
+             :foreign_key => "customers_id",
+             :dependent => :destroy
+
   has_many   :assigned_coupons,
              :foreign_key => "customers_id",
              :dependent => :destroy

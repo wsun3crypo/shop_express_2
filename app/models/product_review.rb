@@ -1,6 +1,9 @@
 class ProductReview < ApplicationRecord
   # Direct associations
 
+  belongs_to :customers,
+             :class_name => "Customer"
+
   # Indirect associations
 
   # Validations
