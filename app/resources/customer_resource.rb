@@ -29,4 +29,18 @@ class CustomerResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :merchants_dealings, resource: MerchantResource do
+    assign_each do |customer, merchants|
+      merchants.select do |m|
+        m.id.in?(customer.merchants_dealings.map(&:id))
+      end
+    end
+  end
+
+
+  filter :products_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:merchants_dealings).where(:purchased_products => {:products_id => value})
+    end
+  end
 end
