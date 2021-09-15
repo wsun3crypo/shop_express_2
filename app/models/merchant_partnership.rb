@@ -1,6 +1,9 @@
 class MerchantPartnership < ApplicationRecord
   # Direct associations
 
+  belongs_to :sender,
+             :class_name => "Merchant"
+
   # Indirect associations
 
   # Validations

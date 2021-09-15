@@ -4,6 +4,8 @@ RSpec.describe MerchantPartnership, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:sender) }
+
     end
 
     describe "InDirect Associations" do

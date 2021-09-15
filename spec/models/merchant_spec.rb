@@ -4,6 +4,8 @@ RSpec.describe Merchant, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:partnership_request) }
+
     it { should have_many(:loyalty_members) }
 
     it { should have_many(:products) }

@@ -1,6 +1,11 @@
 class Merchant < ApplicationRecord
   # Direct associations
 
+  has_many   :partnership_request,
+             :class_name => "MerchantPartnership",
+             :foreign_key => "sender_id",
+             :dependent => :destroy
+
   has_many   :loyalty_members,
              :class_name => "LoyaltyProgram",
              :foreign_key => "merchants_id",
