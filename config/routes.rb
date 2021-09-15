@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :customers
+  resources :customers
   resources :purchased_products
   resources :products
   resources :coupons
