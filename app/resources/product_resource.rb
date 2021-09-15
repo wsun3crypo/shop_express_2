@@ -9,6 +9,9 @@ class ProductResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :purchased_products,
+             foreign_key: :products_id
+
   belongs_to :merchants,
              resource: MerchantResource
 
