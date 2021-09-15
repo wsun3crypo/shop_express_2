@@ -1,6 +1,9 @@
 class Coupon < ApplicationRecord
   # Direct associations
 
+  has_many   :purchased_products,
+             :foreign_key => "coupons_id"
+
   belongs_to :merchants,
              :class_name => "Merchant"
 
