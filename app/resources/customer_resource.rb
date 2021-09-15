@@ -7,6 +7,9 @@ class CustomerResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :purchased_products,
+             foreign_key: :customers_id
+
   # Indirect associations
 
 end

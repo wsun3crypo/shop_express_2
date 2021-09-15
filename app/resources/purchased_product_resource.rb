@@ -11,6 +11,9 @@ class PurchasedProductResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :customers,
+             resource: CustomerResource
+
   belongs_to :products,
              resource: ProductResource
 
