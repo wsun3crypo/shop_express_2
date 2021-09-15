@@ -26,6 +26,14 @@ class Merchant < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :senders,
+             :through => :received_partnership_request,
+             :source => :sender
+
+  has_many   :receivers,
+             :through => :partnership_request,
+             :source => :receiver
+
   has_many   :purchased_products,
              :through => :products,
              :source => :purchased_products
