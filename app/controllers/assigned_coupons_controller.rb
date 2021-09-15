@@ -3,7 +3,8 @@ class AssignedCouponsController < ApplicationController
 
   # GET /assigned_coupons
   def index
-    @assigned_coupons = AssignedCoupon.page(params[:page]).per(10)
+    @q = AssignedCoupon.ransack(params[:q])
+    @assigned_coupons = @q.result(:distinct => true).includes(:coupons, :customers).page(params[:page]).per(10)
   end
 
   # GET /assigned_coupons/1

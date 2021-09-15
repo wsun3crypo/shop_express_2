@@ -3,7 +3,8 @@ class LoyaltyProgramsController < ApplicationController
 
   # GET /loyalty_programs
   def index
-    @loyalty_programs = LoyaltyProgram.page(params[:page]).per(10)
+    @q = LoyaltyProgram.ransack(params[:q])
+    @loyalty_programs = @q.result(:distinct => true).includes(:merchants, :customers, :purchased_products).page(params[:page]).per(10)
   end
 
   # GET /loyalty_programs/1

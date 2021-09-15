@@ -3,7 +3,8 @@ class PurchasedProductsController < ApplicationController
 
   # GET /purchased_products
   def index
-    @purchased_products = PurchasedProduct.page(params[:page]).per(10)
+    @q = PurchasedProduct.ransack(params[:q])
+    @purchased_products = @q.result(:distinct => true).includes(:coupons, :products, :customers, :loyaltyprogram, :productsreview, :merchant).page(params[:page]).per(10)
   end
 
   # GET /purchased_products/1

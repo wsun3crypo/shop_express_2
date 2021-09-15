@@ -5,7 +5,8 @@ class CouponsController < ApplicationController
 
   # GET /coupons
   def index
-    @coupons = Coupon.page(params[:page]).per(10)
+    @q = Coupon.ransack(params[:q])
+    @coupons = @q.result(:distinct => true).includes(:merchants, :purchased_products, :assigned_coupons).page(params[:page]).per(10)
   end
 
   # GET /coupons/1

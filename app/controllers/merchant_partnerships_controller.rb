@@ -3,7 +3,8 @@ class MerchantPartnershipsController < ApplicationController
 
   # GET /merchant_partnerships
   def index
-    @merchant_partnerships = MerchantPartnership.page(params[:page]).per(10)
+    @q = MerchantPartnership.ransack(params[:q])
+    @merchant_partnerships = @q.result(:distinct => true).includes(:sender, :receiver).page(params[:page]).per(10)
   end
 
   # GET /merchant_partnerships/1
