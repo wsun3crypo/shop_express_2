@@ -21,6 +21,10 @@ class PurchasedProduct < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :merchant,
+             :through => :products,
+             :source => :merchants
+
   # Validations
 
   # Scopes

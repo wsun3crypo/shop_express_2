@@ -18,6 +18,8 @@ RSpec.describe PurchasedProduct, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:merchant) }
+
     end
 
     describe "Validations" do
