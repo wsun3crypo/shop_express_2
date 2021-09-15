@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Coupons</dt>
       <!-- Display coupons_id start -->
-      <dd><%= assigned_coupon.coupons_id %></dd>
+      <dd>
+        <% if @assigned_coupon.coupons.present? %>
+          <%= link_to assigned_coupon.coupons, assigned_coupon.coupons %>
+        <% end %>
+      </dd>
       <!-- Display coupons_id end -->
 
       <dt>Customers</dt>
       <!-- Display customers_id start -->
-      <dd><%= assigned_coupon.customers_id %></dd>
+      <dd>
+        <% if @assigned_coupon.customers.present? %>
+          <%= link_to assigned_coupon.customers, assigned_coupon.customers %>
+        <% end %>
+      </dd>
       <!-- Display customers_id end -->
 
     </dl>

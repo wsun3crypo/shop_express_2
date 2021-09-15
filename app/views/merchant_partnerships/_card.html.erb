@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Sender</dt>
       <!-- Display sender_id start -->
-      <dd><%= merchant_partnership.sender_id %></dd>
+      <dd>
+        <% if @merchant_partnership.sender.present? %>
+          <%= link_to merchant_partnership.sender, merchant_partnership.sender %>
+        <% end %>
+      </dd>
       <!-- Display sender_id end -->
 
       <dt>Receiver</dt>
       <!-- Display receiver_id start -->
-      <dd><%= merchant_partnership.receiver_id %></dd>
+      <dd>
+        <% if @merchant_partnership.receiver.present? %>
+          <%= link_to merchant_partnership.receiver, merchant_partnership.receiver %>
+        <% end %>
+      </dd>
       <!-- Display receiver_id end -->
 
     </dl>

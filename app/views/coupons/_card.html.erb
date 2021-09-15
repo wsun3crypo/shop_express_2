@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Merchants</dt>
       <!-- Display merchants_id start -->
-      <dd><%= coupon.merchants_id %></dd>
+      <dd>
+        <% if @coupon.merchants.present? %>
+          <%= link_to coupon.merchants, coupon.merchants %>
+        <% end %>
+      </dd>
       <!-- Display merchants_id end -->
 
       <dt>Amount</dt>

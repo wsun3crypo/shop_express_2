@@ -12,7 +12,11 @@
 
       <dt>Customers</dt>
       <!-- Display customers_id start -->
-      <dd><%= product_review.customers_id %></dd>
+      <dd>
+        <% if @product_review.customers.present? %>
+          <%= link_to product_review.customers, product_review.customers %>
+        <% end %>
+      </dd>
       <!-- Display customers_id end -->
 
     </dl>

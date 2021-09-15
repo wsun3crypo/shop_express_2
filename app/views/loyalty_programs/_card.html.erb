@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Merchants</dt>
       <!-- Display merchants_id start -->
-      <dd><%= loyalty_program.merchants_id %></dd>
+      <dd>
+        <% if @loyalty_program.merchants.present? %>
+          <%= link_to loyalty_program.merchants, loyalty_program.merchants %>
+        <% end %>
+      </dd>
       <!-- Display merchants_id end -->
 
       <dt>Customers</dt>
       <!-- Display customers_id start -->
-      <dd><%= loyalty_program.customers_id %></dd>
+      <dd>
+        <% if @loyalty_program.customers.present? %>
+          <%= link_to loyalty_program.customers, loyalty_program.customers %>
+        <% end %>
+      </dd>
       <!-- Display customers_id end -->
 
     </dl>
