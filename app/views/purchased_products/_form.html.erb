@@ -146,7 +146,7 @@
 
     <%= f.label :productsreview_id %>
     <!-- Input for productsreview_id start -->
-    <%= f.number_field :productsreview_id, class: productsreview_class, placeholder: "Enter productsreview" %>
+    <%= f.collection_select :productsreview_id, ProductReview.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for productsreview_id end -->
     <% if productsreview_was_invalid %>
       <% purchased_product.errors.full_messages_for(:productsreview).each do |message| %>
