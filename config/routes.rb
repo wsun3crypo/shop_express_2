@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :purchased_products
   resources :products
   resources :coupons
   devise_for :merchants

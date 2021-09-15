@@ -1,0 +1,66 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Purchased Product #<%= purchased_product.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Products</dt>
+      <!-- Display products_id start -->
+      <dd><%= purchased_product.products_id %></dd>
+      <!-- Display products_id end -->
+
+      <dt>Coupons</dt>
+      <!-- Display coupons_id start -->
+      <dd><%= purchased_product.coupons_id %></dd>
+      <!-- Display coupons_id end -->
+
+      <dt>Customers</dt>
+      <!-- Display customers_id start -->
+      <dd><%= purchased_product.customers_id %></dd>
+      <!-- Display customers_id end -->
+
+      <dt>Quantity</dt>
+      <!-- Display quantity start -->
+      <dd><%= purchased_product.quantity %></dd>
+      <!-- Display quantity end -->
+
+      <dt>Loyaltyprogram</dt>
+      <!-- Display loyaltyprogram_id start -->
+      <dd><%= purchased_product.loyaltyprogram_id %></dd>
+      <!-- Display loyaltyprogram_id end -->
+
+      <dt>Productsreview</dt>
+      <!-- Display productsreview_id start -->
+      <dd><%= purchased_product.productsreview_id %></dd>
+      <!-- Display productsreview_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back purchased_product, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link purchased_product start -->
+      <div class="col">
+        <%= link_to edit_purchased_product_url(purchased_product), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link purchased_product end -->
+
+      <!-- Delete link purchased_product start -->
+      <div class="col">
+        <%= link_to purchased_product, method: :delete, data: { confirm: "Do you really want to delete this purchased_product?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link purchased_product end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(purchased_product.updated_at) %> ago
+  </div>
+</div>
