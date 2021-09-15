@@ -8,6 +8,9 @@ class CouponResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :purchased_products,
+             foreign_key: :coupons_id
+
   belongs_to :merchants,
              resource: MerchantResource
 
