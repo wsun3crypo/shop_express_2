@@ -1,6 +1,9 @@
 class PurchasedProduct < ApplicationRecord
   # Direct associations
 
+  belongs_to :loyaltyprogram,
+             :class_name => "LoyaltyProgram"
+
   belongs_to :customers,
              :class_name => "Customer"
 

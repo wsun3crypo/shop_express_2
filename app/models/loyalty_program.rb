@@ -1,6 +1,10 @@
 class LoyaltyProgram < ApplicationRecord
   # Direct associations
 
+  has_many   :purchased_products,
+             :foreign_key => "loyaltyprogram_id",
+             :dependent => :destroy
+
   belongs_to :customers,
              :class_name => "Customer"
 
